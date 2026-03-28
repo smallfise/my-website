@@ -84,3 +84,36 @@
 .dark .VPHome .VPHero .text {
   color: #86efac;
 }
+
+/* 想法卡片 — 类 X/推文风格 */
+.thought-card {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  background: var(--vp-c-bg-soft);
+  transition: box-shadow 0.2s ease;
+  line-height: 1.7;
+}
+
+.thought-card:hover {
+  box-shadow: 0 4px 16px rgba(45, 158, 107, 0.1);
+}
+
+.thought-date {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--vp-c-text-3);
+  margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.thought-card p {
+  margin: 0;
+  color: var(--vp-c-text-1);
+}
+
+/* 想法页标题下的分割线间距 */
+.vp-doc h1 + p + hr {
+  margin: 12px 0 20px;
+}

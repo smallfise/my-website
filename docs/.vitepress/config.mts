@@ -2,14 +2,14 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: "我的个人网站",
-  description: "技术笔记与个人知识库",
+  description: "博客与想法",
   lang: 'zh-CN',
 
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
       { text: '博客', link: '/blog/' },
-      { text: '知识库', link: '/notes/' },
+      { text: '想法', link: '/thoughts/' },
     ],
 
     sidebar: {
@@ -21,11 +21,11 @@ export default defineConfig({
           ]
         }
       ],
-      '/notes/': [
+      '/thoughts/': [
         {
-          text: '知识库',
+          text: '想法',
           items: [
-            { text: '目录', link: '/notes/' },
+            { text: '全部想法', link: '/thoughts/' },
           ]
         }
       ]
