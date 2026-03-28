@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: "我的个人网站"
+  name: "Qinxiaoyu的个人网站"
   text: "思考·记录·分享"
   tagline: 长文深思，短句灵感，记录真实的思考轨迹
   actions:
