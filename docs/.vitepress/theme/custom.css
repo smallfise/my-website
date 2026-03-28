@@ -1,0 +1,86 @@
+/* 清新简约风 — 绿/青色系主题 */
+
+:root {
+  /* 主色调：青绿色 */
+  --vp-c-brand-1: #2d9e6b;
+  --vp-c-brand-2: #27926200;
+  --vp-c-brand-3: #e8f7f0;
+  --vp-c-brand-soft: #e8f7f0;
+
+  /* 按钮 */
+  --vp-button-brand-bg: #2d9e6b;
+  --vp-button-brand-hover-bg: #239059;
+  --vp-button-brand-active-bg: #1d7a4c;
+
+  /* 首页 Hero 渐变背景 */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(135deg, #2d9e6b 0%, #0ea5e9 100%);
+  --vp-home-hero-image-background-image: linear-gradient(135deg, #e8f7f0 0%, #e0f2fe 100%);
+  --vp-home-hero-image-filter: blur(44px);
+}
+
+/* Hero 区域整体背景 */
+.VPHome .VPHero {
+  padding: 80px 24px 60px;
+}
+
+.VPHome .VPHero .name {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.VPHome .VPHero .text {
+  font-size: 1.5rem;
+  color: #4b7c67;
+}
+
+.VPHome .VPHero .tagline {
+  color: #6b7280;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Feature 卡片 */
+.VPFeature {
+  border-radius: 16px !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.VPFeature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(45, 158, 107, 0.12) !important;
+}
+
+.VPFeature .icon {
+  font-size: 2rem;
+}
+
+/* 导航栏 */
+.VPNavBar {
+  backdrop-filter: blur(12px);
+}
+
+/* 链接颜色 */
+.vp-doc a {
+  color: #2d9e6b;
+}
+
+.vp-doc a:hover {
+  color: #239059;
+}
+
+/* 深色模式适配 */
+.dark {
+  --vp-c-brand-1: #4ade80;
+  --vp-c-brand-2: #22c55e;
+  --vp-c-brand-3: #166534;
+  --vp-c-brand-soft: #14532d40;
+  --vp-button-brand-bg: #22c55e;
+  --vp-button-brand-hover-bg: #16a34a;
+  --vp-home-hero-name-background: linear-gradient(135deg, #4ade80 0%, #38bdf8 100%);
+}
+
+.dark .VPHome .VPHero .text {
+  color: #86efac;
+}
