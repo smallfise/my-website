@@ -85,35 +85,42 @@
   color: #86efac;
 }
 
-/* 想法卡片 — 类 X/推文风格 */
-.thought-card {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  padding: 16px 20px;
-  margin: 16px 0;
-  background: var(--vp-c-bg-soft);
-  transition: box-shadow 0.2s ease;
-  line-height: 1.7;
+/* 想法页 — 纯 Markdown 卡片流 */
+
+/* 隐藏想法页的 h3 锚点图标，日期不需要 # 链接 */
+.vp-doc h3 .header-anchor {
+  display: none;
 }
 
-.thought-card:hover {
+/* h3 日期样式 */
+.vp-doc h3 {
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  color: var(--vp-c-text-3) !important;
+  margin: 0 0 10px 0 !important;
+  border-top: none !important;
+  padding-top: 0 !important;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* h3 + 段落 = 一张卡片 */
+.vp-doc h3 + p {
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 14px 18px 14px;
+  margin: 0 0 4px 0 !important;
+  line-height: 1.75;
+  transition: box-shadow 0.2s ease;
+}
+
+.vp-doc h3 + p:hover {
   box-shadow: 0 4px 16px rgba(45, 158, 107, 0.1);
 }
 
-.thought-date {
-  display: inline-block;
-  font-size: 0.8rem;
-  color: var(--vp-c-text-3);
-  margin-bottom: 8px;
-  font-variant-numeric: tabular-nums;
-}
-
-.thought-card p {
-  margin: 0;
-  color: var(--vp-c-text-1);
-}
-
-/* 想法页标题下的分割线间距 */
-.vp-doc h1 + p + hr {
-  margin: 12px 0 20px;
+/* 分割线变为卡片间距 */
+.vp-doc hr {
+  border: none !important;
+  margin: 8px 0 20px !important;
 }
