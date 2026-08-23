@@ -1,4 +1,23 @@
 import { defineConfig } from 'vitepress'
+import { readdirSync, readFileSync } from 'node:fs'
+import { join } from 'node:path'
+
+// 自动收集某目录下的 Markdown 文章，用首行 H1 作为侧边栏标题。
+// 以后只要往 blog/ 下丢一个 .md 文件，侧边栏就会自动出现，不用再手动改这里。
+// 注意：npm scripts 从项目根目录运行（vitepress build docs），故用 process.cwd() 定位 docs/。
+function articlesFrom(dir: string) {
+  const dirPath = join(process.cwd(), 'docs', dir)
+
+  return readdirSync(dirPath)
+    .filter((f) => f.endsWith('.md') && f !== 'index.md') // 排除目录首页
+    .map((f) => {
+      const slug = f.replace(/\.md$/, '')
+      const raw = readFileSync(join(dirPath, f), 'utf-8')
+      const title = raw.match(/^#\s+(.+?)\s*$/m)?.[1] ?? slug
+      return { text: title, link: `/${dir}/${slug}` }
+    })
+    .sort((a, b) => a.link.localeCompare(b.link))
+}
 
 export default defineConfig({
   title: "Qinxiaoyu的个人网站",
@@ -10,15 +29,14 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '博客', link: '/blog/' },
       { text: '想法', link: '/thoughts/' },
+      { text: '知识库', link: '/notes/' },
     ],
 
     sidebar: {
       '/blog/': [
         {
           text: '博客文章',
-          items: [
-            { text: '欢迎', link: '/blog/' },
-          ]
+          items: articlesFrom('blog'),
         }
       ],
       '/thoughts/': [
@@ -26,6 +44,14 @@ export default defineConfig({
           text: '想法',
           items: [
             { text: '全部想法', link: '/thoughts/' },
+          ]
+        }
+      ],
+      '/notes/': [
+        {
+          text: '知识库',
+          items: [
+            { text: '全部知识', link: '/notes/' },
           ]
         }
       ]
