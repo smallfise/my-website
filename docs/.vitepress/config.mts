@@ -1,12 +1,16 @@
 import { defineConfig } from 'vitepress'
 import { readdirSync, readFileSync } from 'node:fs'
-import { join } from 'node:path'
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+// 配置文件的目录是 <站点根>/.vitepress，内容目录在它上一级的 <dir>/。
+// 用 import.meta.url 定位，跟运行时 cwd 无关——本地是项目根、Cloudflare 是 docs/，两种都能对。
+const configDir = dirname(fileURLToPath(import.meta.url))
 
 // 自动收集某目录下的 Markdown 文章，用首行 H1 作为侧边栏标题。
 // 以后只要往 blog/ 下丢一个 .md 文件，侧边栏就会自动出现，不用再手动改这里。
-// 注意：npm scripts 从项目根目录运行（vitepress build docs），故用 process.cwd() 定位 docs/。
 function articlesFrom(dir: string) {
-  const dirPath = join(process.cwd(), 'docs', dir)
+  const dirPath = join(configDir, '..', dir)
 
   return readdirSync(dirPath)
     .filter((f) => f.endsWith('.md') && f !== 'index.md') // 排除目录首页
